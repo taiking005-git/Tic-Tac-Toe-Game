@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tick Tac Toe</title>
+    <!--================================================== Linke style sheet ====================================-->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!--===================================== main container start ==================================-->
+    <div class="main-container">
+        <!--============================================== The splash screen start ===================================-->
+        <div class="splash-screen" style="display:none;">
+
+        </div>
+        <!--============================================== start up screen start ===================================-->
+        <div class="start-up-screen">
+            <div class="start-up-top">
+                <div class="circle"></div>
+                <div class="box"></div>
+            </div>
+            <div class="start-up-middle">
+                <h4>pick player 1's mark</h4>
+                <div class="marks-container">
+                    <div class="marks">
+                        <div class="mark active">
+                            <div class="circle "></div>
+                        </div>
+                        <div class="mark">
+                            <div class="box"></div>
+                        </div>
+                        <div class="indicator"></div>
+                    </div>
+                </div>
+                <div class="rem">
+                    <!-- <h5>remember: <div class="circle"></div> Goes first</h5> -->
+                </div>
+            </div>
+            <div class="start-up-bottom">
+                <button class="btn cpu" style="--clr:var(--secondPlayer-clr);">New game (vs cpu)</button>
+                <button class="btn player " style="--clr:var(--firstPlayer-clr);">New game (vs player)</button>
+            </div>
+        </div>
+        <!--============================================== start up screen end ===================================-->
+        <!--============================================== game screen start ===================================-->
+        <div class="game-screen" id="game-screen">
+            <div class="game-top">
+                <div class="game-marks">
+                    <div class="circle"></div>
+                    <div class="box"></div>
+                </div>
+                <div class="game-turn">
+                    <div class="turn"></div>
+                    <h2>TURN</h2>
+                </div>
+                <div class="game-retry">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                        <path
+                            d="M245.09,327.74V290.42c57.07,0,84.51,13.47,108.58,38.68,5.4,5.65,15,1.32,14.29-6.43-5.45-61.45-34.14-117.09-122.87-117.09V168.26a8.32,8.32,0,0,0-14.05-6L146.58,242a8.2,8.2,0,0,0,0,11.94L231,333.71A8.32,8.32,0,0,0,245.09,327.74Z" />
+                        <path d="M256,64C150,64,64,150,64,256s86,192,192,192,192-86,192-192S362,64,256,64Z"
+                            style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:32px" />
+                    </svg>
+                </div>
+            </div>
+            <div class="game-middle">
+                <div class="game-grid">
+                    <div class="square" id="0">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="1">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="2">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="3">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="4">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="5">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="6">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="7">
+                        <div class="boxes"></div>
+                    </div>
+                    <div class="square" id="8">
+                        <div class="boxes"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="game-bottom">
+                <div class="player-score">
+                    <div class="detail">
+                        <div class="mark"></div>
+                        <h4>(YOU)</h4>
+                    </div>
+                    <div>
+                        <h3><span id="player-One-score">0</span></h3>
+                    </div>
+                </div>
+                <div class="ties">
+                    <h4>Ties</h4>
+                    <h3><span id="draw-score">0</span></h3>
+                </div>
+                <div class="cpu-score">
+                    <div class="detail">
+                        <div class="mark"></div>
+                        <h4>(CPU)</h4>
+                    </div>
+                    <h3><span id="cpu-score">0</span></h3>
+                </div>
+            </div>
+            <!--============================================== winning screen start ===================================-->
+            <div class="winning-screen">
+                <div class="content-container">
+                    <div class="winning-screen-top" style="color:var(--neutral-clr)">
+                        <h1><span class="winner"></span></h1>
+                    </div>
+                    <div class="winning-screen-middle" style="color:var(--firstPlayer-clr)">
+                        <div class="turn"></div>
+                        <h3>takes the next round</h3>
+                    </div>
+                    <div class="winning-screen-bottom">
+                        <button class="quit-btn btn" style="--clr:var( --secondPlayer-clr);">Quit</button>
+                        <button class="next-round-btn btn" style="--clr:var( --neutral-clr);">Next Round</button>
+                    </div>
+                </div>
+            </div>
+            <!--============================================== winning screen end ===================================-->
+        </div>
+        <!--============================================== game screen end ===================================-->
+    </div>
+    <!--===================================== main container ends ==================================-->
+    <script src="./app.js"></script>
+    <script src="./ai.js"></script>
+    <script src="./ui.js"></script>
+</body>
+
+</html>

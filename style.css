@@ -1,0 +1,432 @@
+/* :root {
+    --background-clr: #16242c;
+    --bg-light-clr: #40657c;
+    --firstPlayer-clr: #61c5bc;
+    --secondPlayer-clr: #f0b23b;
+    --neutral-clr: #a8bec9;
+    --box-shadow: 5px 7px 2px rgba(0, 0, 0, 0.5);
+    --box-circle-shadow: 7px 7px 2px rgba(0, 0, 0, 0.5),
+        inset 7px 7px 2px rgba(0, 0, 0, 0.5);
+} */
+
+:root {
+    --background-clr: #1c1961;
+    --bg-light-clr: #343090;
+    --firstPlayer-clr: #5f59f7;
+    --secondPlayer-clr: #44c2fd;
+    --neutral-clr: #ffffff;
+    --box-shadow: 5px 7px 2px rgba(0, 0, 0, 0.5);
+    --box-circle-shadow: 7px 7px 2px rgba(0, 0, 0, 0.5),
+        inset 7px 7px 2px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    user-select: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-clr);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: medium;
+    box-shadow: inset 0 -10px 5px 1px rgba(0, 0, 0, 0.37);
+    background-color: var(--clr);
+    padding: 20px 15px;
+}
+
+.btn:active {
+    box-shadow: none;
+}
+
+.circle {
+    border-radius: 50%;
+    border: 10px solid var(--firstPlayer-clr);
+    box-shadow: var(--box-circle-shadow);
+}
+
+.box {
+    border: 10px solid var(--secondPlayer-clr);
+    box-shadow: var(--box-circle-shadow);
+}
+
+.main-container {
+    width: 400px;
+    height: 100vh;
+    position: relative;
+}
+
+/* .splash-screen{
+
+} */
+/* ==================================== start up screen ==================================== */
+.start-up-screen,
+.splash-screen,
+.game-screen {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: all ease-out 0.5s;
+}
+
+.start-up-screen {
+    opacity: 100;
+    z-index: 10;
+}
+
+.start-up-top {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.start-up-top div {
+    margin-right: 6px;
+    width: 40px;
+    height: 40px;
+    border-width: 8px;
+}
+
+.start-up-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    height: 200px;
+    border-radius: 20px;
+    background-color: var(--bg-light-clr);
+    color: var(--neutral-clr);
+    text-transform: uppercase;
+    margin: 60px 0;
+    box-shadow: var(--box-shadow);
+}
+
+.marks-container {
+    height: 60px;
+    width: 80%;
+    padding: 0 3px;
+    border-radius: 10px;
+    background-color: var(--background-clr);
+    z-index: 10;
+}
+
+.marks {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: center;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.marks .indicator {
+    top: 3px;
+    left: 0px;
+    position: absolute;
+    height: 90%;
+    width: 50%;
+    border-radius: 10px;
+    background-color: var(--neutral-clr);
+    z-index: -1;
+    transition: all .15s ease;
+}
+
+.mark {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.mark .circle,
+.mark .box {
+    height: 45px;
+    width: 45px;
+    border-width: 8px;
+    box-shadow: none;
+}
+.mark.active .circle,
+.mark.active .box {
+    box-shadow: var(--box-circle-shadow);
+    transition: all .5s ease-in-out;
+}
+
+
+
+.marks .mark:nth-child(1).active~.indicator {
+    transform: translateX(0%);
+}
+
+.marks .mark:nth-child(2).active~.indicator {
+    transform: translateX(100%);
+}
+
+
+.start-up-bottom {
+    display: flex;
+    width: 90%;
+    height: 150px;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.rem {
+    color: var(--background-clr);
+}
+
+.rem div {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-width: 5px;
+}
+
+
+/* ====================================== start up screen end ================================ */
+/* ====================================== game screen start ================================== */
+.game-screen {
+    display: none;
+    opacity: 0;
+    z-index: 5;
+}
+
+.game-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+    margin-bottom: 50px;
+}
+
+.game-marks {
+    display: flex;
+}
+
+.game-marks div {
+    margin-right: 6px;
+    width: 30px;
+    height: 30px;
+    border-width: 5px;
+}
+
+.game-turn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-clr);
+    background-color: var(--bg-light-clr);
+    text-align: center;
+    height: 70%;
+    width: 150px;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.turn.circle,
+.turn.box {
+    margin-right: 10px;
+    width: 25px;
+    height: 25px;
+    border: 5px solid;
+    transition: all .3s ease-in-out;
+}
+
+.game-retry {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    height: 80%;
+    width: 80px;
+    background-color: var(--neutral-clr);
+    box-shadow: var(--box-shadow);
+    border-radius: 12px;
+}
+
+.game-retry svg {
+    height: 100%;
+    width: 100%;
+    box-shadow: var(--box-shadow);
+}
+
+.game-middle {
+    margin-bottom: 30px;
+    width: 90%;
+}
+
+.game-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 380px;
+    width: 100%;
+}
+
+.game-grid .square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+    width: 110px;
+    border-radius: 12px;
+    background-color: var(--bg-light-clr);
+    box-shadow: var(--box-shadow);
+}
+
+.square .boxes {
+    height: 70%;
+    width: 70%;
+    transition: all .3s ease-in-out;
+}
+
+.game-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 80px;
+}
+
+.player-score,
+.ties,
+.cpu-score {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    height: 100%;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-score {
+    background-color: var(--firstPlayer-clr);
+}
+
+.detail .mark.box,
+.detail .mark.circle {
+    width: 25px;
+    height: 25px;
+    border: 5px solid black;
+}
+
+.ties {
+    background-color: var(--neutral-clr);
+}
+
+.cpu-score {
+    background-color: var(--secondPlayer-clr);
+}
+
+/* ====================================== game screen end ================================== */
+/* ============================================== winning start =================================== */
+.winning-screen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    z-index: 100;
+    /* opacity: 0; */
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.555);
+    padding: 30px 0;
+}
+
+.winning-screen-middle {
+    display: flex;
+}
+
+@media all and (max-width:400px) {
+    .game-grid .square {
+        height: 90px;
+        width: 110px;
+    }
+
+    .game-grid {
+        height: 310px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        /* height: 620px; */
+        position: relative;
+    }
+}
+
+@media all and (max-width:370px) {
+    .game-grid .square {
+        height: 90px;
+        width: 90px;
+    }
+
+    .game-grid {
+        height: 300px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        position: relative;
+    }
+}
+
+@media screen and (min-width:760px) {
+    .game-grid .square {
+        height: 120px;
+        width: 120px;
+    }
+
+    .game-grid {
+        height: 410px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 480px;
+        /* height: 700px; */
+        position: relative;
+    }
+}
