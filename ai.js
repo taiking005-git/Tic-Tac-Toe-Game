@@ -42,7 +42,7 @@ function AI_MasterMove() {
 }
 
 function score(game, depth) {
-    var score = CheckForWinner(game);
+    let score = CheckForWinner(game);
     if (score === 1)
         return 0;
     else if (score === 2)
@@ -57,11 +57,11 @@ function minimax(tempBoardGame, depth) {
         return score(tempBoardGame, depth);
 
     depth += 1;
-    var scores = new Array();
-    var moves = new Array();
-    var availableMoves = GetAvailableMoves(tempBoardGame);
-    var move, possible_game;
-    for (var i = 0; i < availableMoves.length; i++) {
+    let scores = new Array();
+    let moves = new Array();
+    let availableMoves = GetAvailableMoves(tempBoardGame);
+    let move, possible_game;
+    for (let i = 0; i < availableMoves.length; i++) {
         move = availableMoves[i];
         possible_game = GetNewState(move, tempBoardGame);
         scores.push(minimax(possible_game, depth));
@@ -69,7 +69,7 @@ function minimax(tempBoardGame, depth) {
         tempBoardGame = UndoMove(tempBoardGame, move);
     }
 
-    var max_score, max_score_index, min_score,
+    let max_score, max_score_index, min_score,
         min_score_index;
     if (active_turn === "COMPUTER") {
         max_score = Math.max.apply(Math, scores);
@@ -91,13 +91,13 @@ function UndoMove(game, move) {
 }
 
 function GetNewState(move, game) {
-    var piece = ChangeTurn();
+    let piece = ChangeTurn();
     game[move] = piece;
     return game;
 }
 
 function ChangeTurn() {
-    var piece;
+    let piece;
     if (active_turn === "COMPUTER") {
         piece = 'X';
         active_turn = "HUMAN";
@@ -109,8 +109,8 @@ function ChangeTurn() {
 }
 
 function GetAvailableMoves(game) {
-    var possibleMoves = new Array();
-    for (var i = 0; i < BOARD_SIZE; i++)
+    let possibleMoves = new Array();
+    for (let i = 0; i < BOARD_SIZE; i++)
         if (game[i] === UNOCCUPIED)
             possibleMoves.push(i);
     return possibleMoves;
