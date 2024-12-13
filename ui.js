@@ -37,7 +37,7 @@ undoMove_btn.addEventListener("click", () => {
             })
         }
         if (cpu_player && playerTwo_mark === lastClass) {
-            nowinner = true
+            // nowinner = true
             ai_playerTwo();
         }
     }

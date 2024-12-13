@@ -43,7 +43,7 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     font-size: medium;
-    box-shadow: inset 0 -10px 5px 1px rgba(0, 0, 0, 0.37);
+    box-shadow: inset 0 -10px 5px 1px rgba(0, 0, 0, 0.329);
     background-color: var(--clr);
     padding: 20px 15px;
 }
